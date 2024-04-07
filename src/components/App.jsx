@@ -41,7 +41,7 @@ export class App extends Component {
     this.setState({ filter: filter.toLowerCase() });
   };
 
-  render() {
+  getFilteredContacts() {
     let filteredContacts = this.state.contacts;
     const filter = this.state.filter?.trim();
 
@@ -50,6 +50,12 @@ export class App extends Component {
         item.name.toLowerCase().includes(filter)
       );
     }
+
+    return filteredContacts;
+  }
+
+  render() {
+    const filteredContacts = this.getFilteredContacts();
 
     return (
       <div
